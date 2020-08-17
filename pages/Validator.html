@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>代码分析平台</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+        <meta name="description" />
+        <meta name="keywords" />
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+        <meta http-equiv="expires" content="0">
+        <meta name="format-detection" content="telephone=no" />
+        <link href="/lib/site.min.css" rel="stylesheet" type="text/css" />
+        <link href="/lib/index.min.css" rel="stylesheet" type="text/css" />
+        <link href="/lib/validator.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+        <script>
+                var nightMode = false;
+                if (document.cookie.indexOf("nightMode=1") >= 0) {
+                        document.body.className += " night";
+                        nightMode = true;
+                }
+        </script>
+        <script src="/lib/navigation_home.js"></script>
+
+        <div class="bb" style="margin-top: 106px;">
+                <div id="validator">
+                        <ul class="bar">
+                                <li data-id="1" id="b-1" class=""><a href="#wxml">WXML 验证</a></li>
+                                <li data-id="2" id="b-2" class=""><a href="#wxss">WXSS 验证</a></li>
+                                <li data-id="3" id="b-3" class=""><a href="#js">JS 验证</a></li>
+                        </ul>
+                        <div class="bd" id="d-1">
+                                <iframe class="validator" src="/validator/xmlparser/xmlparser.html"></iframe>
+                        </div>
+                        <div class="bd" id="d-2">
+                                
+                        </div>
+                        <div class="bd" id="d-3">
+                                <iframe class="validator" src="/validator/jshint/jshint.html"></iframe>
+                        </div>
+                </div>
+        </div>
+        <div style="height:2000px;"></div>
+
+
+        <script src="/jquery/jquery.min.js"></script>
+        <script>
+                (window.jQuery || document.write("<script src='\/jquery\/jquery.min.js'><\/script>"));
+        </script>
+        <script src="/jquery/jquery.cookie.min.js"></script>
+        <script>
+                (window.jQuery && window.jQuery.fn && window.jQuery.fn.cookie || document.write(
+                        "\u003Cscript src=\u0022/jquery/jquery.cookie.min.js\u0022\u003E\u003C\/script\u003E"));
+        </script>
+        <script src="/jquery/jquery.lazyload.min.js"></script>
+        <script>
+                (window.jQuery && window.jQuery.fn && window.jQuery.fn.lazyload || document.write(
+                        "\u003Cscript src=\u0022/jquery/jquery.lazyload.min.js\u0022\u003E\u003C\/script\u003E"
+                ));
+        </script>
+        <script src="/lib/popwin.js"></script>
+        <script src="/lib/site.js"></script>
+        <script>
+                var para = window.location.hash
+                const pages = ["wxml","wxss","js"]
+                var page = pages.indexOf(para.split("#")[1])+1
+                console.log(page)
+                if(page <= 0){
+                        page = 1;
+                }
+                var idb = "#b-" + page
+                var idd = "#d-" + page
+                $("#navis .bar li").removeClass("sel");
+                $("#navis .bd").removeClass("sel");
+                $(idb).addClass("sel");
+                $(idd).addClass("sel");
+                $("#validator .bar li").click(function () {
+                        $("#validator .bar li").removeClass("sel");
+                        $(this).addClass("sel");
+
+                        var id = "#d-" + $(this).data("id");
+                        $("#validator .bd").removeClass("sel");
+                        $(id).addClass("sel");
+                });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+.validator {
+  margin-top: 8px;
+  border: none;
+  width: 1200px;
+  height: calc(100vh - 200px);
+}
+
+@media screen and (max-height:700px) {
+  .validator {
+    height: calc(500px) !important;
+  }
+}
+
+#validator .bar {
+  display: flex;
+  align-items: baseline;
+  height: 60px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+#validator .bar li {
+  display: inline-block;
+  height: 47px;
+  text-align: center;
+  line-height: 50px;
+  padding: 0 18px 12px;
+  cursor: pointer;
+  font-size: 26px;
+  white-space: nowrap;
+  transition: border .2s ease;
+}
+
+#validator .bar li:not(:last-child):after {
+  content: "";
+  background: #e5e5e5;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  width: 1px;
+  height: 20px;
+  left: 18.5px;
+  top: 1px;
+}
+
+#validator .bar li.sel {
+  border-bottom: 2px solid #ec672f;
+  line-height: 50px;
+  transition: border .2s ease;
+}
+
+#validator a {
+  color: #222;
+  text-decoration: none;
+}
+
+#validator a:hover {
+  color: #ec672f;
+}
+
+#validator .bd {
+  display: none;
+}
+
+#validator .bd.sel {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width:1520px) {
+  .validator {
+    width: 1400px;
+  }
+  #validator .bar {
+    height: 62px;
+  }
+  #validator .bar li {
+    padding: 0 20px 14px;
+  }
+  #validator .bar li:not(:last-child):after {
+    height: 20px;
+    left: 20.5px;
+    top: 1px;
+  }
+}
+
+@media screen and (max-width:1320px) {
+  .validator {
+    width: 1000px;
+  }
+  #validator .bar {
+    height: 53px;
+  }
+  #validator .bar li {
+    height: 42px;
+    line-height: 45px;
+    padding: 0 15px 10px;
+    font-size: 24px;
+  }
+  #validator .bar li:not(:last-child):after {
+    height: 19px;
+    left: 15.5px;
+    top: 1.5px;
+  }
+  #validator .bar li.sel {
+    height: 42px;
+    line-height: 45px;
+    font-size: 24px;
+  }
+}
+
+body.night #side_func{opacity:.8}body.night .cat-list{background-color:#303030}body.night .cat-list .p{border-bottom-color:#555}body.night .cat-list .p a.img{border-color:#555}body.night .cat-list ul li:before{background:#ccc}body.night #validator{color:#ccc}body.night #validator a{color:#ccc}body.night #validator a:hover{color:#fff}body.night #validator .bar{border-bottom:1px solid #555}body.night #validator .bd li:before{background:#999}body.night #validator .cm ul li .l-3{background:#3b3b3b;color:#999}body.night #validator .cm ul li .l-3:before{border-bottom-color:#3b3b3b}
