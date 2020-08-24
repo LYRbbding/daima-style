@@ -1,0 +1,28 @@
+{
+  "name": "simditor-checklist",
+  "description": "The checklist extension for Simditor.",
+  "version": "1.2.1",
+  "homepage": "https://github.com/nil/simditor-checklist",
+  "authors": [
+    "kshift <kshift.lv@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nil/simditor-checklist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nil/simditor-checklist/issues"
+  },
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "devDependencies": {
+    "grunt": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "grunt-contrib-coffee": "0.x",
+    "grunt-contrib-sass": "0.x",
+    "grunt-contrib-jasmine": "0.x",
+    "grunt-umd": "2.x"
+  },
+  "keywords": []
+}

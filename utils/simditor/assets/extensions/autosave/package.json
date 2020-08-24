@@ -1,0 +1,25 @@
+{
+  "name": "simditor-autosave",
+  "description": "A autosave plugin for Simditor",
+  "version": "1.1.2",
+  "homepage": "https://github.com/mycolorway/simditor-autosave",
+  "main": "lib/simditor-autosave.js",
+  "author": {
+    "name": "farthinker",
+    "email": "farthinker@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mycolorway/simditor-autosave.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mycolorway/simditor-autosave/issues"
+  },
+  "devDependencies": {
+    "grunt": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "grunt-contrib-coffee": "0.x",
+    "grunt-umd": "2.x"
+  }
+}

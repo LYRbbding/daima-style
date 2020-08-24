@@ -1,0 +1,31 @@
+{
+  "name": "simditor-checklist",
+  "version": "1.2.1",
+  "homepage": "https://github.com/nil/simditor-checklist",
+  "authors": [
+    "kshift <kshift.lv@gmail.com>"
+  ],
+  "description": "The checklist extension for Simditor",
+  "main": "lib/simditor-checklist.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "spec",
+    "node_modules",
+    "vendor",
+    "Gemfile",
+    "Gemfile.lock",
+    "Gruntfile.coffee",
+    "package.json",
+    "README.md",
+    "umd.hbs"
+  ],
+  "dependencies": {
+    "jquery": "2.x",
+    "simditor": "2.3.x"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "~2.1.0"
+  }
+}

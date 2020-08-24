@@ -1,0 +1,144 @@
+/* Light Mode */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+  color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+  color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #8959a8;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: white;
+  color: #4d4d4c;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+
+/* Dark Mode */
+
+/* Tomorrow Comment */
+body.night .hljs-comment,
+body.night .hljs-quote {
+  color: #999999;
+}
+
+/* Tomorrow Red */
+body.night .hljs-variable,
+body.night .hljs-template-variable,
+body.night .hljs-tag,
+body.night .hljs-name,
+body.night .hljs-selector-id,
+body.night .hljs-selector-class,
+body.night .hljs-regexp,
+body.night .hljs-deletion {
+  color: #f2777a;
+}
+
+/* Tomorrow Orange */
+body.night .hljs-number,
+body.night .hljs-built_in,
+body.night .hljs-builtin-name,
+body.night .hljs-literal,
+body.night .hljs-type,
+body.night .hljs-params,
+body.night .hljs-meta,
+body.night .hljs-link {
+  color: #f99157;
+}
+
+/* Tomorrow Yellow */
+body.night .hljs-attribute {
+  color: #ffcc66;
+}
+
+/* Tomorrow Green */
+body.night .hljs-string,
+body.night .hljs-symbol,
+body.night .hljs-bullet,
+body.night .hljs-addition {
+  color: #99cc99;
+}
+
+/* Tomorrow Blue */
+body.night .hljs-title,
+body.night .hljs-section {
+  color: #6699cc;
+}
+
+/* Tomorrow Purple */
+body.night .hljs-keyword,
+body.night .hljs-selector-tag {
+  color: #cc99cc;
+}
+
+body.night .hljs {
+  display: block;
+  overflow-x: auto;
+  background: #2d2d2d;
+  color: #cccccc;
+}
+
+body.night .hljs-emphasis {
+  font-style: italic;
+}
+
+body.night .hljs-strong {
+  font-weight: bold;
+}

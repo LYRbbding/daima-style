@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>代码分析平台</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+    <meta name="description" />
+    <meta name="keywords" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="/lib/site.min.css" rel="stylesheet" type="text/css" />
+    <link href="/lib/index.min.css" rel="stylesheet" type="text/css" />
+    <link href="/lib/navis.css" rel="stylesheet" type="text/css" />
+
+    <link media="all" rel="stylesheet" type="text/css" href="/utils/simditor/assets/styles/app.css" />
+    <link media="all" rel="stylesheet" type="text/css" href="/utils/simditor/assets/styles/simditor.css" />
+    <link media="all" rel="stylesheet" type="text/css"
+        href="/utils/simditor/assets/extensions/checklist/styles/simditor-checklist.css" />
+    <link media="all" rel="stylesheet" type="text/css"
+        href="/utils/simditor/assets/extensions/emoji/styles/simditor-emoji.css" />
+    <link media="all" rel="stylesheet" type="text/css"
+        href="/utils/simditor/assets/extensions/fullscreen/styles/simditor-fullscreen.css" />
+    <link media="all" rel="stylesheet" type="text/css"
+        href="/utils/simditor/assets/extensions/html/styles/simditor-html.css" />
+    <link rel="stylesheet" type="text/css" href="/utils/highlight.js-10.1.2/highlight-simditor.css">
+
+    <script type="text/javascript" src="/utils/simditor/assets/scripts/mobilecheck.js"></script>
+    <!--<script type="text/javascript">
+        if (mobilecheck()) {
+            $('<link/>', {
+                media: 'all',
+                rel: 'stylesheet',
+                type: 'text/css',
+                href: '/utils/simditor/assets/styles/mobile.css'
+            }).appendTo('head')
+        }
+    </script>-->
+</head>
+
+<body>
+    <script>
+        var nightMode = false;
+        if (document.cookie.indexOf("nightMode=1") >= 0) {
+            document.body.className += " night";
+            nightMode = true;
+        }
+    </script>
+    <script src="/lib/navigation_answering.js"></script>
+
+    <div class="bb" style="margin-top: 106px;">
+        <section id="simditor-richtext">
+            <textarea id="txt-content" style="display:none" data-autosave="editor-content" required>
+                <p>你的反馈，对我们至关重要！</p>
+                <!--<p>欢迎进行问题编辑，编辑前请注意以下问题：</p>
+                <ul>
+                    <li>请尽可能详细描述问题内容及复现方式。</li>
+                    <li>请提供问题代码及报错内容。</li>
+                    <li>提供问题代码时请使用“代码插入”功能。</li>
+                    <li>发送图片时请提供截图，而非手机照片。</li>
+                </ul>
+                <p>以上注意事项可以帮助大家更清楚地描述问题，有助于相关老师、助教及同学进行解答。</p>
+                <p></p><pre>.test{}</pre>-->
+            </textarea>
+        </section>
+    </div>
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script>
+        (window.jQuery || document.write("<script src='\/jquery\/jquery.min.js'><\/script>"));
+    </script>
+    <script src="/jquery/jquery.cookie.min.js"></script>
+    <script>
+        (window.jQuery && window.jQuery.fn && window.jQuery.fn.cookie || document.write(
+            "\u003Cscript src=\u0022/jquery/jquery.cookie.min.js\u0022\u003E\u003C\/script\u003E"));
+    </script>
+    <script src="/jquery/jquery.lazyload.min.js"></script>
+    <script>
+        (window.jQuery && window.jQuery.fn && window.jQuery.fn.lazyload || document.write(
+            "\u003Cscript src=\u0022/jquery/jquery.lazyload.min.js\u0022\u003E\u003C\/script\u003E"
+        ));
+    </script>
+    <script src="/lib/popwin.js"></script>
+    <script src="/lib/site.js"></script>
+
+
+    <script type="text/javascript" src="/utils/simditor/assets/scripts/module.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/scripts/uploader.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/scripts/simditor.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/autosave/lib/simditor-autosave.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/checklist/lib/simditor-checklist.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/dropzone/lib/simditor-dropzone.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/emoji/lib/simditor-emoji.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/fullscreen/lib/simditor-fullscreen.js">
+    </script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/html/lib/beautify-html.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/html/lib/simditor-html.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/mark/lib/simditor-mark.js"></script>
+    <script type="text/javascript" src="/utils/simditor/assets/extensions/simditor-undo.js"></script>
+    <script src="/utils/highlight.js-10.1.2/highlight.pack.js"></script>
+    <script>
+        (function () {
+            $(function () {
+                var $preview, editor, mobileToolbar, toolbar;
+                const worker = new Worker('/utils/simditor/worker.js');
+                Simditor.locale = 'zh-CN';
+                toolbar = ['undo', 'redo', '|', 'title', 'bold', 'italic', 'underline', 'strikethrough',
+                    'fontScale', 'color', 'mark', '|', 'ol', 'ul', 'checklist', 'blockquote', 'code',
+                    'table', '|', 'link', 'image', 'emoji', 'hr', '|', 'indent', 'outdent', 'alignment',
+                    '|', 'html', 'fullscreen'
+                ];
+                mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+                if (mobilecheck()) {
+                    toolbar = mobileToolbar;
+                }
+                editor = new Simditor({
+                    textarea: $('#txt-content'),
+                    placeholder: '这里输入文字...',
+                    toolbar: toolbar,
+                    toolbarFloatOffset: 40,
+                    emoji: {
+                        imagePath: '/utils/simditor/assets/extensions/emoji/images/emoji/'
+                    },
+                    pasteImage: true,
+                    defaultImage: '/utils/simditor/assets/extensions/emoji/images/image.png',
+                    cleanPaste: true,
+                    upload: /*location.search === '?upload' ? */ {
+                        url: '/upload'
+                    } /*: false*/ ,
+                    pasteImage: true,
+                    codeLanguages: [{
+                        name: 'WXML',
+                        value: 'html'
+                    }, {
+                        name: 'WXSS',
+                        value: 'css'
+                    }, {
+                        name: 'LESS',
+                        value: 'less'
+                    }, {
+                        name: 'JS (JavaScript)',
+                        value: 'js'
+                    }, {
+                        name: 'TS (TypeScript)',
+                        value: 'ts'
+                    }, {
+                        name: 'JSON',
+                        value: 'json'
+                    }, {
+                        name: 'C/C++',
+                        value: 'c++'
+                    }]
+                });
+                $preview = $('#preview');
+                if ($preview.length > 0) {
+                    return editor.on('valuechanged', function (e) {
+                        return $preview.html(editor.getValue());
+                    });
+                }
+                var timer = undefined
+                $(editor).on('valuechanged', function () {
+                    if (timer !== null && timer !== undefined) {
+                        clearTimeout(timer)
+                        timer = null
+                    }
+                    if (timer === undefined) {
+                        timer = null
+                        document.querySelectorAll(
+                                '#simditor-richtext .simditor .simditor-wrapper .simditor-body pre'
+                            )
+                            .forEach((code) => {
+                                worker.onmessage = (event) => {
+                                    code.innerHTML = event.data;
+                                }
+                                worker.postMessage(code.textContent);
+                            });
+                    } else {
+                        timer = setTimeout(function () {
+                            document.querySelectorAll(
+                                    '#simditor-richtext .simditor .simditor-wrapper .simditor-body pre'
+                                )
+                                .forEach((code) => {
+                                    worker.onmessage = (event) => {
+                                        code.innerHTML = event.data;
+                                    }
+                                    worker.postMessage(code.textContent);
+                                });
+                        }, 3000);
+                    }
+                })
+            });
+
+        }).call(this);
+    </script>
+</body>
+
+</html>
